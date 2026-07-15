@@ -16,9 +16,9 @@ const AppDownload = () => {
           backgroundSize: "18px 18px",
         }}
       >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8  py-10 sm:py-14">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 py-10 sm:py-14">
           {/* Left content */}
-          <div className="text-center ml-32">
+          <div className="text-center md:text-left w-full md:w-1/2 md:ml-32 px-4 md:px-0">
             <p className="text-4xl sm:text-5xl text-neutral-900 font-medium">
               Download the
             </p>
@@ -29,7 +29,7 @@ const AppDownload = () => {
               Scan the QR code to download the <span className="font-semibold text-neutral-900">App</span>
             </p>
 
-            <div className="mt-6 flex items-center  justify-center  gap-3">
+            <div className="mt-6 flex items-center justify-center md:justify-start flex-wrap gap-3">
               <a
                 href="#"
                 className="flex items-center gap-2  bg-black rounded-lg px-3.5 py-2 hover:scale-105 transition-all duration-300"
@@ -53,21 +53,35 @@ const AppDownload = () => {
             </div>
           </div>
 
-          {/* Right: phone image with empty slot for scanner/QR */}
-          <div className="relative shrink-0 w-[200px] sm:w-[300px] md:w-[500px]">
-            <img
-              src="/phone.png"
-              alt="Phone frame showing QR code scanner"
-              className="w-full h-auto object-contain select-none pointer-events-none block"
-            />
-            {/* Scanner centered over the phone screen.
-                If it's off, tweak translate-y-[..%] below to nudge up/down */}
-            <div className="absolute inset-0 flex items-center ml-28 justify-center">
-              <img
-                src="/scanner.png"
-                alt="scanner"
-                className="w-[250px] h-auto object-contain"
-              />
+          {/* Right: phone image, attached to the card's corner.
+              The block below (200/300/500 widths + scanner's 250px/ml-28)
+              is untouched — responsiveness comes from scaling the whole
+              block down on smaller screens via `scale`, not by editing
+              those px values. transform-origin keeps it anchored to the
+              corner while it scales. */}
+          <div
+            className="hidden md:flex relative w-full md:w-auto justify-center md:justify-end md:mr-0"
+            style={{ overflow: "visible" }}
+          >
+            <div
+              className="origin-bottom sm:origin-bottom-right scale-[0.65] sm:scale-[0.8] md:scale-100 translate-y-4 sm:translate-y-2 md:translate-y-0"
+            >
+              <div className="relative shrink-0 w-[200px] sm:w-[300px] md:w-[500px]">
+                <img
+                  src="/phone.png"
+                  alt="Phone frame showing QR code scanner"
+                  className="w-full h-auto object-contain select-none pointer-events-none block"
+                />
+                {/* Scanner centered over the phone screen.
+                    If it's off, tweak translate-y-[..%] below to nudge up/down */}
+                <div className="absolute inset-0 flex items-center ml-28 justify-center">
+                  <img
+                    src="/scanner.png"
+                    alt="scanner"
+                    className="w-[250px] h-auto object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
