@@ -40,7 +40,7 @@ const About = () => {
         >
           {/* Phone — fixed, never animates/swaps */}
           <img
-            src="/iphone.png"
+            src="/iPhone.png"
             alt="Apna Crusher app on phone"
             className="w-full max-w-md  lg:max-w-full h-[320px] sm:h-[370px] lg:h-[450px] object-contain"
           />
