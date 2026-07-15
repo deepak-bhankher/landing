@@ -31,7 +31,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex justify-center lg:justify-start"
+          className="relative flex justify-center lg:justify-start mb-24 sm:mb-20 lg:mb-0"
         >
           {/* Phone — fixed, never animates/swaps */}
           <img
@@ -42,15 +42,17 @@ const About = () => {
 
           {/* Hand — swaps between hand1.png / hand2.png every 2s,
               slides in from the left each time, layered over the phone.
-              POSITION: anchored to the left edge (`left: 0`) instead of
-              centered, so the full hand shows instead of being cropped.
-              `top` controls how far down it sits — increase this if it's
-              still covering the phone's screen text near the top.
-              SIZE: bumped up via `w-[..]` below — adjust as needed. */}
+              The hand+gravel image is taller than the phone itself, so it
+              spills below the phone's box on purpose — the `mb-*` above
+              on the parent reserves that extra room so it never overlaps
+              the heading text underneath, at any screen size.
+              POSITION: `top` / `left` below control placement — tune per
+              breakpoint if it still looks off on a given screen size.
+              SIZE: `w-[..]` below controls hand size per breakpoint. */}
           <div className="absolute inset-0 pointer-events-none">
             <div
-              className="absolute w-[85%] sm:w-[80%] lg:w-[75%]"
-              style={{ top: "38%", left: "0%" }}
+              className="absolute w-[78%] sm:w-[80%] lg:w-[75%]"
+              style={{ top: "22%", left: "0%" }}
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -61,7 +63,7 @@ const About = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -80 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full h-auto object-contain"
+                  className="w-full mt-24 h-auto object-contain"
                 />
               </AnimatePresence>
             </div>
@@ -74,7 +76,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative"
+          className="relative text-center lg:text-left"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
             Everything at
@@ -82,7 +84,7 @@ const About = () => {
             <span className="font-extrabold  text-3xl sm:text-4xl lg:text-6xl">One Place</span>
           </h2>
 
-          <p className="mt-4 text-neutral-500 text-sm sm:text-base leading-relaxed max-w-md">
+          <p className="mt-4 text-neutral-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0">
             Find Verified Crushers, compare prices <br/> place orders and track
             deliveries – all in <br/>onne app
           </p>
@@ -100,7 +102,7 @@ const About = () => {
 />
 
           {/* Stats grid */}
-          <div className="mt-16 grid grid-cols-2  text-center pb-6 gap-x-10 gap-y-8 max-w-md border-t bg-[#F5F5F5] rounded-2xl border-neutral-100 pt-6">
+          <div className="mt-16 grid grid-cols-2  text-center pb-6 gap-x-10 gap-y-8 max-w-md mx-auto lg:mx-0 border-t bg-[#F5F5F5] rounded-2xl border-neutral-100 pt-6">
             {stats.map((stat, i) => (
               <div key={i}>
                 <p className="text-xs sm:text-sm text-neutral-400 mb-1">
