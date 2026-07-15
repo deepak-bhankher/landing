@@ -41,7 +41,8 @@ const About = () => {
           />
 
           {/* Hand — swaps between hand1.png / hand2.png every 2s,
-              slides in from the left each time, layered over the phone.
+              stays put on top of the phone and crossfades in place
+              (opacity only, no slide). Layered over the phone.
               The hand+gravel image is taller than the phone itself, so it
               spills below the phone's box on purpose — the `mb-*` above
               on the parent reserves that extra room so it never overlaps
@@ -59,9 +60,9 @@ const About = () => {
                   key={handImages[activeHand]}
                   src={handImages[activeHand]}
                   alt="Hand holding gravel"
-                  initial={{ opacity: 0, x: -80 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -80 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="w-full mt-24 h-auto object-contain"
                 />
