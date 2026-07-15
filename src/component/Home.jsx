@@ -3,7 +3,7 @@ import React from "react";
 const Home = () => {
   return (
     <section className="bg-white px-1 sm:px-2 lg:px-4 py-4">
-      <div className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:h-[600px] rounded-[28px] overflow-hidden shadow-lg">
+      <div className="relative h-screen min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:h-[600px] rounded-[28px] overflow-hidden shadow-lg">
         
         {/* Background Image */}
         <img
