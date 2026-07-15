@@ -10,7 +10,7 @@ const stats = [
 
 // Hand images layered on top of the fixed phone image — these swap
 // every 2s while the phone underneath stays completely still.
-const handImages = ["/hand1.png", "/hand2.png"];
+const handImages = ["/hand1.png", "/hand2.png","/hand3.png","/hand4.png","/hand5.png","/hand6.png","/hand7.png","/hand8.png"];
 
 const About = () => {
   const [activeHand, setActiveHand] = useState(0);
