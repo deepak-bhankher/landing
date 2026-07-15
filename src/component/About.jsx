@@ -8,60 +8,63 @@ const stats = [
   { label: "Happy Client's", value: "130K+" },
 ];
 
-// Images that auto-cycle inside the phone/hand visual slot.
-// Swap file names here if yours are different.
-const heroImages = ["/image2.png", "/about1.png", "/about2.png"];
+// Hand images layered on top of the fixed phone image — these swap
+// every 2s while the phone underneath stays completely still.
+const handImages = ["/hand1.png", "/hand2.png"];
 
 const About = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeHand, setActiveHand] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % heroImages.length);
-    }, 3000); // change image every 3s — adjust to taste
+      setActiveHand((prev) => (prev + 1) % handImages.length);
+    }, 2000); // swap every 2s
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="w-full bg-white py-14 sm:py-20 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  items-center">
-        {/* Left: phone + hand image, auto-cycling slideshow */}
+        {/* Left: phone image */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex justify-center lg:justify-start w-full max-w-md lg:max-w-full mx-auto overflow-hidden"
+          className="relative flex justify-center lg:justify-start"
         >
-          {/* Fixed-ratio box keeps layout stable across breakpoints while
-              images cross-fade/slide in, so nothing jumps in size. */}
-          <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={heroImages[activeIndex]}
-                src={heroImages[activeIndex]}
-                alt="Apna Crusher app on phone with hand holding gravel"
-                initial={{ opacity: 0, x: -60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 60 }}
-                transition={{ duration: 0.7, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full object-contain"
-              />
-            </AnimatePresence>
-          </div>
+          {/* Phone — fixed, never animates/swaps */}
+          <img
+            src="/Iphone.png"
+            alt="Apna Crusher app on phone"
+            className="w-full max-w-md lg:max-w-full h-[320px] sm:h-[370px] lg:h-[450px] object-contain"
+          />
 
-          {/* Dots indicator */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 lg:left-4 lg:translate-x-0">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`Show image ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeIndex ? "w-5 bg-neutral-900" : "w-1.5 bg-neutral-300"
-                }`}
-              />
-            ))}
+          {/* Hand — swaps between hand1.png / hand2.png every 2s,
+              slides in from the left each time, layered over the phone.
+              POSITION: anchored to the left edge (`left: 0`) instead of
+              centered, so the full hand shows instead of being cropped.
+              `top` controls how far down it sits — increase this if it's
+              still covering the phone's screen text near the top.
+              SIZE: bumped up via `w-[..]` below — adjust as needed. */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div
+              className="absolute w-[85%] sm:w-[80%] lg:w-[75%]"
+              style={{ top: "38%", left: "0%" }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={handImages[activeHand]}
+                  src={handImages[activeHand]}
+                  alt="Hand holding gravel"
+                  initial={{ opacity: 0, x: -80 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="w-full h-auto object-contain"
+                />
+              </AnimatePresence>
+            </div>
           </div>
         </motion.div>
 
