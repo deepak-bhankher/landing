@@ -23,9 +23,14 @@ const About = () => {
   }, []);
 
   return (
-    <section className="w-full bg-white py-14 sm:py-20 ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  items-center">
-        {/* Left: phone image */}
+    <section className="w-full bg-white py-14 sm:py-20 overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+        {/* Left: phone image — deliberately NOT inside the max-w-7xl mx-auto
+            wrapper below. This column is a direct grid child of a full-width
+            (100vw) row, so on lg+ screens it always starts flush against the
+            true left edge of the viewport, no matter how wide the window is
+            (Mac, ultra-wide monitor, whatever). Don't wrap this column in a
+            max-w-7xl/mx-auto container again or the left-edge alignment breaks. */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -77,7 +82,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative text-center lg:text-left"
+          className="relative text-center lg:text-left w-full max-w-2xl mx-auto lg:mx-0 px-6 lg:pl-4 lg:pr-16 xl:pr-24"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
             Everything at
