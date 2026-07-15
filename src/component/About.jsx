@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const stats = [
   { label: "Verified Supplier's", value: "2,500+" },
@@ -8,23 +8,61 @@ const stats = [
   { label: "Happy Client's", value: "130K+" },
 ];
 
+// Images that auto-cycle inside the phone/hand visual slot.
+// Swap file names here if yours are different.
+const heroImages = ["/image2.png", "/about1.png", "/about2.png"];
+
 const About = () => {
-  return (  
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % heroImages.length);
+    }, 3000); // change image every 3s — adjust to taste
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
     <section className="w-full bg-white py-14 sm:py-20 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  items-center">
-        {/* Left: phone + hand image */}
+        {/* Left: phone + hand image, auto-cycling slideshow */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center lg:justify-start"
+          className="relative flex justify-center lg:justify-start w-full max-w-md lg:max-w-full mx-auto overflow-hidden"
         >
-          <img
-            src="/image2.png"
-            alt="Apna Crusher app on phone with hand holding gravel"
-            className="w-full max-w-md lg:max-w-full object-contain"
-          />
+          {/* Fixed-ratio box keeps layout stable across breakpoints while
+              images cross-fade/slide in, so nothing jumps in size. */}
+          <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={heroImages[activeIndex]}
+                src={heroImages[activeIndex]}
+                alt="Apna Crusher app on phone with hand holding gravel"
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 60 }}
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full object-contain"
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Dots indicator */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 lg:left-4 lg:translate-x-0">
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Show image ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === activeIndex ? "w-5 bg-neutral-900" : "w-1.5 bg-neutral-300"
+                }`}
+              />
+            ))}
+          </div>
         </motion.div>
 
         {/* Right: content */}
