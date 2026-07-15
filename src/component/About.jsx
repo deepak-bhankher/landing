@@ -9,7 +9,7 @@ const stats = [
 ];
 
 const About = () => {
-  return (
+  return (  
     <section className="w-full bg-white py-14 sm:py-20 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  items-center">
         {/* Left: phone + hand image */}
@@ -33,16 +33,17 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-neutral-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
             Everything at
             <br />
-            <span className="font-extrabold">One Place</span>
+            <span className="font-extrabold  text-3xl sm:text-4xl lg:text-6xl">One Place</span>
           </h2>
 
           <p className="mt-4 text-neutral-500 text-sm sm:text-base leading-relaxed max-w-md">
-            Find Verified Crushers, compare prices place orders and track
-            deliveries – all in onne app
+            Find Verified Crushers, compare prices <br/> place orders and track
+            deliveries – all in <br/>onne app
           </p>
 
           <a
@@ -50,24 +51,15 @@ const About = () => {
             className="relative inline-block mt-2 text-sm font-medium text-neutral-900 underline underline-offset-4"
           >
             Learn more
-            <svg
-              className="hidden sm:block absolute -right-16 -top-6 w-16 h-10 text-blue-500"
-              viewBox="0 0 80 50"
-              fill="none"
-            >
-              <path
-                d="M2 2 C 40 2, 60 10, 70 40"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-                fill="none"
-              />
-              <circle cx="70" cy="40" r="3" fill="currentColor" />
-            </svg>
           </a>
+      <img
+  src="/arrow.png"
+  alt="Arrow"
+  className="absolute top-8 left-20 lg:right-20 w-[200px] lg:w-[300px] pointer-events-none"
+/>
 
           {/* Stats grid */}
-          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-8 max-w-md border-t border-neutral-100 pt-8">
+          <div className="mt-16 grid grid-cols-2  text-center pb-6 gap-x-10 gap-y-8 max-w-md border-t bg-[#F5F5F5] rounded-2xl border-neutral-100 pt-6">
             {stats.map((stat, i) => (
               <div key={i}>
                 <p className="text-xs sm:text-sm text-neutral-400 mb-1">

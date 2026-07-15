@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const AppDownload = () => {
   return (
-    <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-14 sm:py-20">
+    <section className="w-full px-4 sm:px-8 md:px-12 lg:px-32 py-14 sm:py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -16,10 +16,10 @@ const AppDownload = () => {
           backgroundSize: "18px 18px",
         }}
       >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 px-6 sm:px-10 md:px-14 py-10 sm:py-14">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8  py-10 sm:py-14">
           {/* Left content */}
-          <div className="text-center md:text-left">
-            <p className="text-3xl sm:text-4xl text-neutral-900 font-medium">
+          <div className="text-center ml-32">
+            <p className="text-4xl sm:text-5xl text-neutral-900 font-medium">
               Download the
             </p>
             <h2 className="text-5xl sm:text-6xl font-extrabold text-neutral-900">
@@ -29,12 +29,12 @@ const AppDownload = () => {
               Scan the QR code to download the <span className="font-semibold text-neutral-900">App</span>
             </p>
 
-            <div className="mt-6 flex items-center  justify-center md:justify-start gap-3">
+            <div className="mt-6 flex items-center  justify-center  gap-3">
               <a
                 href="#"
                 className="flex items-center gap-2  bg-black rounded-lg px-3.5 py-2 hover:scale-105 transition-all duration-300"
               >
-                <GooglePlayIcon className="w-5 h-5 shrink-0" />
+                <GooglePlayIcon className="w-8 h-8 shrink-0" />
                 <span className="flex flex-col items-start leading-tight text-white">
                   <span className="text-[9px]">GET IT ON</span>
                   <span className="text-sm font-semibold -mt-0.5">Google Play</span>
@@ -44,7 +44,7 @@ const AppDownload = () => {
                 href="#"
                 className="flex items-center gap-2 bg-black rounded-lg px-3.5 py-2 hover:scale-105 transition-all duration-300"
               >
-                <AppleIcon className="w-5 h-5 shrink-0" />
+                <AppleIcon className="w-8 h-8 shrink-0" />
                 <span className="flex flex-col items-start leading-tight text-white">
                   <span className="text-[9px]">Download on the</span>
                   <span className="text-sm font-semibold -mt-0.5">App Store</span>
@@ -54,7 +54,7 @@ const AppDownload = () => {
           </div>
 
           {/* Right: phone image with empty slot for scanner/QR */}
-          <div className="relative shrink-0 w-72 sm:w-80 md:w-96">
+          <div className="relative shrink-0 w-[200px] sm:w-[300px] md:w-[500px]">
             <img
               src="/phone.png"
               alt="Phone frame showing QR code scanner"
@@ -66,7 +66,7 @@ const AppDownload = () => {
               <img
                 src="/scanner.png"
                 alt="scanner"
-                className="w-[200px] h-auto object-contain"
+                className="w-[250px] h-auto object-contain"
               />
             </div>
           </div>

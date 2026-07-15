@@ -30,14 +30,14 @@ const features = [
 
 function FeatureItem({ icon, eyebrow, title, desc }) {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-5">
       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-neutral-900 text-2xl">
         {icon}
       </div>
       <div>
-        <div className="text-sm text-neutral-400">{eyebrow}</div>
+        <div className="text-sm text-neutral-400 mb-2">{eyebrow}</div>
         <div className="text-2xl font-bold text-neutral-900">{title}</div>
-        <p className="mt-1 max-w-xs text-sm text-neutral-500">{desc}</p>
+        <p className="mt-5 -ml-20 max-w-xs text-sm text-neutral-500">{desc}</p>
       </div>
     </div>
   );
@@ -51,9 +51,9 @@ export default function FeaturesSection() {
           Feature's
         </h2>
 
-        <div className="relative mt-16 grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2">
+        <div className="relative mt-16 grid grid-cols-1 gap-x-56  gap-y-10 md:grid-cols-2">
           {/* vertical divider (desktop only) */}
-          <div className="pointer-events-none absolute inset-y-4 left-1/2 hidden w-px -translate-x-1/2 bg-neutral-200 md:block" />
+          <div className="pointer-events-none absolute inset-y-1 left-1/2 hidden w-px -translate-x-1/2 bg-neutral-200 md:block" />
           {/* horizontal divider (desktop only) */}
           <div className="pointer-events-none absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-neutral-200 md:block" />
 
@@ -64,7 +64,7 @@ export default function FeaturesSection() {
       </div>
 
       {/* marquee strip */}
-      <div className="overflow-hidden bg-neutral-100 py-5">
+      <div className="overflow-hidden bg-neutral-100 py-5 mt-7">
         <div className="animate-marquee flex w-max whitespace-nowrap text-2xl text-neutral-400">
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="mx-8 font-medium">
