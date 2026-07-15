@@ -24,7 +24,7 @@ const About = () => {
 
   return (
     <section className="w-full bg-white py-14 sm:py-20 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         {/* Left: phone image — deliberately NOT inside the max-w-7xl mx-auto
             wrapper below. This column is a direct grid child of a full-width
             (100vw) row, so on lg+ screens it always starts flush against the
@@ -36,13 +36,13 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex justify-center lg:justify-start mb-24 sm:mb-20 lg:mb-0"
+          className="order-2 lg:order-1 relative flex justify-center  lg:justify-start   "
         >
           {/* Phone — fixed, never animates/swaps */}
           <img
-            src="/Iphone.png"
+            src="/iphone.png"
             alt="Apna Crusher app on phone"
-            className="w-full max-w-md lg:max-w-full h-[320px] sm:h-[370px] lg:h-[450px] object-contain"
+            className="w-full max-w-md  lg:max-w-full h-[320px] sm:h-[370px] lg:h-[450px] object-contain"
           />
 
           {/* Hand — swaps between hand1.png / hand2.png every 2s,
@@ -69,7 +69,7 @@ const About = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full mt-24 h-auto object-contain"
+                  className="w-full mt-28 h-auto object-contain"
                 />
               </AnimatePresence>
             </div>
@@ -82,7 +82,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative text-center lg:text-left w-full max-w-2xl mx-auto lg:mx-0 px-6 lg:pl-4 lg:pr-16 xl:pr-24"
+          className="order-1 lg:order-2 relative text-center lg:text-left w-full max-w-2xl mx-auto lg:mx-0 px-6 lg:pl-4 lg:pr-16 xl:pr-24"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
             Everything at
