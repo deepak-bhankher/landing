@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <section className="bg-white px-1 sm:px-2 lg:px-4 py-4">
+    <section className="bg-white  py-4">
       <div className="relative h-screen  overflow-hidden shadow-lg">
         {/* Background Image */}
         <img
